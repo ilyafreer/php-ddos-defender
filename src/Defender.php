@@ -1,11 +1,8 @@
 <?php
 declare(strict_types=1);
 
-namespace DdosDefender;
+namespace Ilyafreer\DdosDefender;
 
-/**
- * 
- */
 final class Defender
 {
     private const PREFIX_FILE_NAME = 'ddos_filter_';
