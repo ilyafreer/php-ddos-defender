@@ -1,0 +1,18 @@
+{
+    "name": "ilyafreer/ddos_defender",
+    "description": "Simple protects from ddos attacks only php. Blocks requests by a list of timeouts. Deny by ipList for ip v4. Deny by userAgentList. It is possible to set a partial match",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Ilyafreer\\DdosDefender\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "ilyafreer",
+            "email": "ilyafreer@gmail.com"
+        }
+    ],
+    "require": {}
+}
