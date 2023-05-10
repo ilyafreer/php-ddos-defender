@@ -3,7 +3,7 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
-use DdosDefender\Defender;
+use Ddos\Defender;
 
 (new Defender())
     ->setIpList(['172.27.0.1'])

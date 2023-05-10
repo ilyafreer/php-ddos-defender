@@ -1,7 +1,7 @@
 <?php
 declare(strict_types=1);
 
-namespace Ilyafreer\DdosDefender;
+namespace Ddos;
 
 final class Defender
 {
@@ -13,7 +13,8 @@ final class Defender
     private array $ipList = [];
     private array $userAgentList = [];
     private string $blockMessage = 'Too many requests';
-    private int $blockResponseCode = 429;
+    private int $blockCode = 429;
+    private int $deleteHistoryIntervalDays = 5;
     
     public function setPathFile(string $pathFile): self
     {
@@ -27,9 +28,15 @@ final class Defender
         return $this;
     }
 
-    public function setBlockResponseCode(int $code): self
+    public function setDeleteHistoryInterval(int $deleteHistoryIntervalDays): self
     {
-        $this->blockResponseCode = $code;
+        $this->deleteHistoryIntervalDays = $deleteHistoryIntervalDays;
+        return $this;
+    }
+
+    public function setBlockCode(int $code): self
+    {
+        $this->blockCode = $code;
         return $this;
     }
 
@@ -90,7 +97,7 @@ final class Defender
 
     private function ban(): void
     {
-        http_response_code($this->blockResponseCode);
+        http_response_code($this->blockCode);
         print($this->blockMessage);
         die;
     }
