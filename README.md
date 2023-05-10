@@ -6,7 +6,9 @@
 
 ## Example usage
 ```
-use Ddos\Defender;
+require 'vendor/autoload.php';
+
+use Ilyafreer\DdosDefender\Defender;
 
 (new Defender())
     ->setIpList(['172.27.0.1'])
