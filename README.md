@@ -2,7 +2,7 @@
 `` Powered by history files ``
 
 ## Install
-``composer require ilyafreer/ddos-defender``
+``composer require ilyafreer/php-ddos-defender``
 
 ## Example usage
 ```
