@@ -124,6 +124,7 @@ final class Defender
 
     private function blockByHistory(string $currentUserIp, string $currentUserAgent): bool
     {
+        $this->removeHistoryFiles();
         $fullFilePath = $this->pathFile.DIRECTORY_SEPARATOR.self::PREFIX_FILE_NAME.date('Y-m-d');
         $timeNow = microtime(true);
 
@@ -252,5 +253,20 @@ final class Defender
         file_put_contents($fullFilePath, $content);
     }
 
+    private function removeHistoryFiles(): void
+    {
+        $currentDate = new \Datetime('now');
+
+        /* get files in dir */
+        $files = scandir($this->pathFile);
+        foreach ($files as $fileName){
+            if (preg_match('/'.self::PREFIX_FILE_NAME.'(\d{4,}-\d{2,}-\d{2,})/', $fileName, $match)) {
+                $fileDate = new \Datetime($match[1]);
+                if ( $currentDate->diff($fileDate)->days > $this->deleteHistoryIntervalDays) {
+                    unlink($this->pathFile.DIRECTORY_SEPARATOR.$fileName);
+                }
+            }
+        }
+    }
 }
 
